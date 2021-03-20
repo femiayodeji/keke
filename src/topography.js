@@ -17,7 +17,7 @@ export default class Topography{
     }
 
     update(deltaTime){
-        this.dx++;
+        this.dx += 5;
     }
     
     draw(context){

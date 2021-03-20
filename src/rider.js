@@ -17,13 +17,13 @@ export default class Rider{
         let point = this.gameHeight - topography.slope(this.position.x + topography.dx) * 0.25;
         
         if(this.position.y < point - 36){
-            this.dy -= 0.2;
+            this.dy += 0.2;
         }
         else{
+            this.dy -= this.position.y - (point - 36);
             this.position.y = point - 36;
-            this.dy = 0;
         }
-        this.position.y -= this.dy;
+        this.position.y += this.dy;
 
     }
 
