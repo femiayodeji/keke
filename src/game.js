@@ -1,4 +1,5 @@
-import Topography from '/src/topography';
+import Topography from "/src/topography";
+import Rider from "/src/rider";
 
 export default class Game{
     constructor(canvas){
@@ -7,11 +8,12 @@ export default class Game{
         this.gameObjects = [];
 
         this.topography = new Topography(this);
+        this.rider = new Rider(this);
         this.start();
     }
     
     start(){
-        this.gameObjects = [this.topography];
+        this.gameObjects = [this.topography, this.rider];
     }
 
     update(deltaTime){
