@@ -6,7 +6,7 @@ export default class Topography{
         this.hills = [];
         this.loadHills();
 
-        this.xt = 0;
+        this.dx = 0;
     }
     
     loadHills(){
@@ -17,7 +17,7 @@ export default class Topography{
     }
 
     update(deltaTime){
-        this.xt++;
+        this.dx++;
     }
     
     draw(context){
@@ -29,7 +29,7 @@ export default class Topography{
         context.moveTo(0, this.gameHeight)
     
         for(let i = 0; i < this.gameWidth; i++){
-            context.lineTo(i, this.gameHeight - this.slope(i + this.xt) * 0.25);
+            context.lineTo(i, this.gameHeight - this.slope(i + this.dx) * 0.25);
         }
         context.lineTo(this.gameWidth, this.gameHeight);
         context.fill();    
