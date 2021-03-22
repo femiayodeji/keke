@@ -11,9 +11,6 @@
   "author": "Femi Ayodeji <femidotayodeji@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "parcel": "^1.12.3"
-  },
-  "dependencies": {
-    "src": "^1.1.2"
+    "parcel": "1.12.3"
   }
 }
