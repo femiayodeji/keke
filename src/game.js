@@ -1,5 +1,6 @@
 import Topography from "/src/topography";
 import Rider from "/src/rider";
+import InputHandler from '/src/input';
 
 export default class Game{
     constructor(canvas){
@@ -9,6 +10,10 @@ export default class Game{
 
         this.topography = new Topography(this);
         this.rider = new Rider(this);
+
+        this.keys = { ArrowUp: 0, ArrowDown: 0, ArrowLeft: 0, ArrowRight: 0,};
+        new InputHandler(this);        
+
         this.start();
     }
     

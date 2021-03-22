@@ -7,6 +7,7 @@ export default class Rider{
 
         this.position = { x: this.gameWidth/2, y: 0 };   
         this.dy = 0;
+        
         this.rotation = 0;
         this.spinRate = 0;
 
