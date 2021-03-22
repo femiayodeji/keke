@@ -41,7 +41,7 @@ export default class Rider{
 
         this.spinRate += (this.game.keys.ArrowLeft - this.game.keys.ArrowRight) * 0.5;
         this.rotation -= this.spinRate * 0.5;
-        this.speed -= this.speed - ((this.game.keys.ArrowUp - this.game.keys.ArrowDown)) * 1;
+        this.speed -= (this.speed - (this.game.keys.ArrowUp - this.game.keys.ArrowDown)) * 0.01;
     }
 
     draw(context){
