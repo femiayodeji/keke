@@ -3,6 +3,8 @@ export default class Topography{
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
 
+        this.game = game;
+        
         this.hills = [];
         this.loadHills();
 
@@ -17,7 +19,7 @@ export default class Topography{
     }
 
     update(deltaTime){
-        this.dx += 5;
+        this.dx += 5 * this.game.rider.speed;
     }
     
     draw(context){

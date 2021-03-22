@@ -7,14 +7,15 @@ export default class Rider{
 
         this.position = { x: this.gameWidth/2, y: 0 };   
         this.dy = 0;
-        
+
         this.rotation = 0;
         this.spinRate = 0;
+        this.speed = 0;
 
         this.image = document.getElementById("img-rider");        
         this.size = 30;
     }
-
+    
     update(deltaTime){
         let topography = this.game.topography;
         let point = this.gameHeight - topography.slope(this.position.x + topography.dx) * 0.25;
@@ -39,6 +40,7 @@ export default class Rider{
         }
         this.rotation -= this.spinRate * 0.5;
 
+        this.speed -= this.speed - ((this.game.keys.ArrowUp - this.game.keys.ArrowDown)) * 0.8;
     }
 
     draw(context){
