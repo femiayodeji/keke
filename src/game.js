@@ -7,23 +7,24 @@ export default class Game{
     constructor(canvas){
         this.gameWidth = canvas.width;
         this.gameHeight = canvas.height;
-        this.gameState = GAMESTATE.RACING;
+        this.gameState = GAMESTATE.MENU;
         this.gameObjects = [];
-
-        this.topography = new Topography(this);
-        this.rider = new Rider(this);
 
         this.keys = { ArrowUp: 0, ArrowDown: 0, ArrowLeft: 0, ArrowRight: 0,};
         new InputHandler(this);        
-
-        this.start();
     }
     
     start(){
+        this.gameState = GAMESTATE.RACING;
+        this.topography = new Topography(this);
+        this.rider = new Rider(this);
+
         this.gameObjects = [this.topography, this.rider];
     }
 
     update(deltaTime){
+        if(this.gameState !== GAMESTATE.RACING) return;
+
         this.gameObjects.forEach((object) => {
             object.update(deltaTime);
         });
@@ -34,9 +35,13 @@ export default class Game{
             object.draw(context);
         });
 
-        if(this.gameState == GAMESTATE.STOP){
+        if(this.gameState === GAMESTATE.STOP){
             this.gameOverScreen(context);
         }
+        else if(this.gameState === GAMESTATE.MENU){
+            this.menuScreen(context);
+        }
+
 
     }
 
@@ -53,7 +58,28 @@ export default class Game{
             this.gameWidth / 2, 
             this.gameHeight / 2
         );
+
+        context.font = "15px Arial";
+        context.fillText(
+            "Press ENTER to Restart", 
+            this.gameWidth / 2, 
+            this.gameHeight / 2 + 40
+        );
     }
 
+    menuScreen(context){
+        context.rect(0, 0, this.gameWidth, this.gameHeight);
+        context.fillStyle = "rgba(0, 0, 0, 1)";
+        context.fill();
+
+        context.font = "30px Arial";
+        context.fillStyle = "#ffffff";
+        context.textAlign = "center";
+        context.fillText(
+            "Press ENTER to Start", 
+            this.gameWidth / 2, 
+            this.gameHeight / 2
+        );
+    }
 
 }
