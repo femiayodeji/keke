@@ -33,6 +33,27 @@ export default class Game{
         this.gameObjects.forEach((object) => {
             object.draw(context);
         });
+
+        if(this.gameState == GAMESTATE.STOP){
+            this.gameOverScreen(context);
+        }
+
     }
+
+    gameOverScreen(context){
+        context.rect(0, 0, this.gameWidth, this.gameHeight);
+        context.fillStyle = "rgba(255, 0, 0, 1)";
+        context.fill();
+
+        context.font = "30px Arial";
+        context.fillStyle = "#ffffff";
+        context.textAlign = "center";
+        context.fillText(
+            "GAME OVER", 
+            this.gameWidth / 2, 
+            this.gameHeight / 2
+        );
+    }
+
 
 }
