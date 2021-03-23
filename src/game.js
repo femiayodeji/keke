@@ -1,11 +1,13 @@
 import Topography from "/src/topography";
 import Rider from "/src/rider";
 import InputHandler from '/src/input';
+import { GAMESTATE } from '/src/state';
 
 export default class Game{
     constructor(canvas){
         this.gameWidth = canvas.width;
         this.gameHeight = canvas.height;
+        this.gameState = GAMESTATE.RACING;
         this.gameObjects = [];
 
         this.topography = new Topography(this);

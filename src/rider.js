@@ -1,3 +1,5 @@
+import { GAMESTATE } from '/src/state';
+
 export default class Rider{
     constructor(game){
         this.gameWidth = game.gameWidth;
@@ -34,13 +36,28 @@ export default class Rider{
         let angle = Math.atan2((nextPoint - 15) - this.position.y, (this.position.x + 5) - this.position.x);
         this.position.y += this.dy;
 
-        if(grounded){
+        if(
+            this.game.gameState !== GAMESTATE.RACING || 
+            grounded && 
+            Math.abs(this.rotation) > Math.PI * 0.5
+        ){
+            this.game.gameState = GAMESTATE.STOP;
+            this.spinRate = 5;
+            this.game.keys.ArrowUp = 1;
+            this.position.x -= this.speed * 2.5;
+        }
+
+        if(grounded && this.game.gameState === GAMESTATE.RACING){
             this.rotation -= (this.rotation - angle) * 0.5;
             this.spinRate = this.spinRate - (angle - this.rotation);
         }
 
         this.spinRate += (this.game.keys.ArrowLeft - this.game.keys.ArrowRight) * 0.05;
+
         this.rotation -= this.spinRate * 1;
+        if(this.rotation > Math.PI) this.rotation = -Math.PI;
+        if(this.rotation < -Math.PI) this.rotation = Math.PI;
+
         this.speed -= (this.speed - (this.game.keys.ArrowUp - this.game.keys.ArrowDown)) * 0.01;
     }
 
