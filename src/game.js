@@ -9,8 +9,7 @@ export default class Game{
         this.gameHeight = canvas.height;
         this.gameState = GAMESTATE.MENU;
         this.gameObjects = [];
-
-        this.keys = { ArrowUp: 0, ArrowDown: 0, ArrowLeft: 0, ArrowRight: 0,};
+        this.keys = {};
         new InputHandler(this);        
     }
     
@@ -20,6 +19,8 @@ export default class Game{
         this.rider = new Rider(this);
 
         this.gameObjects = [this.topography, this.rider];
+
+        this.keys = { ArrowUp: 0, ArrowDown: 0, ArrowLeft: 0, ArrowRight: 0,};
     }
 
     update(deltaTime){
