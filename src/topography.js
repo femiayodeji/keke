@@ -23,10 +23,10 @@ export default class Topography{
     }
     
     draw(context){
-        context.fillStyle = "#19f";
+        context.fillStyle = "#f80000";
         context.fillRect(0, 0, this.gameWidth, this.gameHeight);
     
-        context.fillStyle = "#000";
+        context.fillStyle = "#654321";
         context.beginPath();
         context.moveTo(0, this.gameHeight)
     
