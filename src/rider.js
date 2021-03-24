@@ -43,7 +43,7 @@ export default class Rider{
         ){
             this.game.gameState = GAMESTATE.STOP;
             this.spinRate = 5;
-            this.game.keys.ArrowUp = 1;
+            this.game.keys.ArrowRight = 1;
             this.position.x -= this.speed * 2.5;
         }
 
@@ -52,13 +52,13 @@ export default class Rider{
             this.spinRate = this.spinRate - (angle - this.rotation);
         }
 
-        this.spinRate += (this.game.keys.ArrowLeft - this.game.keys.ArrowRight) * 0.05;
+        this.spinRate += (this.game.keys.ArrowDown - this.game.keys.ArrowUp) * 0.05;
 
         this.rotation -= this.spinRate * 1;
         if(this.rotation > Math.PI) this.rotation = -Math.PI;
         if(this.rotation < -Math.PI) this.rotation = Math.PI;
 
-        this.speed -= (this.speed - (this.game.keys.ArrowUp - this.game.keys.ArrowDown)) * 0.01;
+        this.speed -= (this.speed - (this.game.keys.ArrowRight - this.game.keys.ArrowLeft)) * 0.01;
         this.game.score += parseInt(deltaTime * this.speed * 0.3);
     }
 
