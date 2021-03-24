@@ -15,7 +15,7 @@ export default class Game{
         this.keys = {};
         new InputHandler(this);       
         
-        this.start();
+        // this.start();
     }
     
     start(){
