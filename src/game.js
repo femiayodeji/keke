@@ -1,4 +1,5 @@
 import Topography from "/src/topography";
+import Sun from "/src/sun";
 import Rider from "/src/rider";
 import InputHandler from '/src/input';
 import { GAMESTATE } from '/src/state';
@@ -22,9 +23,10 @@ export default class Game{
         this.score = 0;
         this.gameState = GAMESTATE.RACING;
         this.topography = new Topography(this);
+        this.sun = new Sun(this);
         this.rider = new Rider(this);
 
-        this.gameObjects = [this.topography, this.rider];
+        this.gameObjects = [this.topography, this.sun, this.rider];
 
         this.keys = { ArrowUp: 0, ArrowDown: 0, ArrowLeft: 0, ArrowRight: 0,};
     }
