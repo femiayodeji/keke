@@ -9,11 +9,17 @@ export default class Game{
         this.gameHeight = canvas.height;
         this.gameState = GAMESTATE.MENU;
         this.gameObjects = [];
+
+        this.score = 0;
+
         this.keys = {};
-        new InputHandler(this);        
+        new InputHandler(this);       
+        
+        this.start();
     }
     
     start(){
+        this.score = 0;
         this.gameState = GAMESTATE.RACING;
         this.topography = new Topography(this);
         this.rider = new Rider(this);
@@ -43,6 +49,7 @@ export default class Game{
             this.menuScreen(context);
         }
 
+        this.scorePanel(context);
 
     }
 
@@ -80,6 +87,17 @@ export default class Game{
             "Press ENTER to Start", 
             this.gameWidth / 2, 
             this.gameHeight / 2
+        );
+    }
+
+    scorePanel(context){
+        context.font = "15px Arial";
+        context.fillStyle = "#ffffff";
+        context.textAlign = "left";
+        context.fillText(
+            `Score: ${this.score}`, 
+            10,
+            20,
         );
     }
 
