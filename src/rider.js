@@ -58,7 +58,13 @@ export default class Rider{
         if(this.rotation > Math.PI) this.rotation = -Math.PI;
         if(this.rotation < -Math.PI) this.rotation = Math.PI;
 
-        this.speed -= (this.speed - (this.game.keys.ArrowRight - this.game.keys.ArrowLeft)) * 0.01;
+        let leftInput = this.game.score >= 1 ? this.game.keys.ArrowLeft : 0;
+        this.speed -= (this.speed - (this.game.keys.ArrowRight - leftInput)) * 0.01;
+        
+        if(this.game.score < 1 && this.speed < 0) {
+            this.speed = 0;
+        }
+        
         this.game.score += parseInt(deltaTime * this.speed * 0.3);
     }
 

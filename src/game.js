@@ -14,9 +14,7 @@ export default class Game{
         this.score = 0;
 
         this.keys = {};
-        new InputHandler(this);       
-        
-        // this.start();
+        new InputHandler(this);
     }
     
     start(){
@@ -68,13 +66,6 @@ export default class Game{
             this.gameWidth / 2, 
             this.gameHeight / 2
         );
-
-        context.font = "15px Arial";
-        context.fillText(
-            "Press ENTER to Restart", 
-            this.gameWidth / 2, 
-            this.gameHeight / 2 + 40
-        );
     }
 
     menuScreen(context){
@@ -86,7 +77,7 @@ export default class Game{
         context.fillStyle = "#ffffff";
         context.textAlign = "center";
         context.fillText(
-            "Press ENTER to Start", 
+            "KADA", 
             this.gameWidth / 2, 
             this.gameHeight / 2
         );
