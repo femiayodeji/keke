@@ -1,6 +1,7 @@
 {
-  "name": "Keke",
+  "name": "kada",
   "version": "1.0.0",
+  "packageManager": "yarn@3.2.4",
   "description": "An html5 motocycle game.",
   "main": "index.html",
   "scripts": {
